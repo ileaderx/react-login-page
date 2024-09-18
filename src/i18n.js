@@ -1,39 +1,24 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-
-const resources = {
-  en: {
-    translation: {
-      "username": "Username",
-      "password": "Password",
-      "confirmPassword": "Confirm Password",
-      "login": "Login",
-      "signup": "Sign Up",
-      "Passwords do not match": "Passwords do not match"
-    }
-  },
-  ar: {
-    translation: {
-      "username": "اسم المستخدم",
-      "password": "كلمة المرور",
-      "confirmPassword": "تأكيد كلمة المرور",
-      "login": "تسجيل الدخول",
-      "signup": "إنشاء حساب",
-      "Passwords do not match": "كلمتا المرور غير متطابقتين"
-    }
-  }
-};
+import enTranslation from './locales/en/translation.json';
+import arTranslation from './locales/ar/translation.json';
 
 
 i18n
   .use(initReactI18next)
   .init({
-    resources,
-    lng: "en", // default language
-    fallbackLng: "en",
-    interpolation: {
-      escapeValue: false
-    }
+    resources: {
+      en: { translation: enTranslation },
+      ar: { translation: arTranslation }
+    },
+    lng: 'en', // default language
+    fallbackLng: 'en',
+    interpolation: { escapeValue: false }
   });
+
+// Change direction based on language
+i18n.on('languageChanged', (lng) => {
+  document.documentElement.dir = lng === 'ar' ? 'rtl' : 'ltr';
+});
 
 export default i18n;

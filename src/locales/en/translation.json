@@ -1,0 +1,10 @@
+{
+  "signup": "Sign Up",
+  "login": "Login",
+  "username": "Username",
+  "password": "Password",
+  "confirmPassword": "Confirm Password",
+  "welcome": "Welcome",
+  "welcomeMessage": "You have successfully logged in!",
+  "logout": "Logout"
+}
