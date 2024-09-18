@@ -6,17 +6,24 @@ const resources = {
     translation: {
       "username": "Username",
       "password": "Password",
-      "login": "Login"
+      "confirmPassword": "Confirm Password",
+      "login": "Login",
+      "signup": "Sign Up",
+      "Passwords do not match": "Passwords do not match"
     }
   },
   ar: {
     translation: {
       "username": "اسم المستخدم",
       "password": "كلمة المرور",
-      "login": "تسجيل الدخول"
+      "confirmPassword": "تأكيد كلمة المرور",
+      "login": "تسجيل الدخول",
+      "signup": "إنشاء حساب",
+      "Passwords do not match": "كلمتا المرور غير متطابقتين"
     }
   }
 };
+
 
 i18n
   .use(initReactI18next)
