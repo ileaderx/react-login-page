@@ -11,15 +11,13 @@ const Welcome = () => {
   const { t } = useTranslation();
 
   const handleLogout = () => {
-    // Dispatch the logout action
     dispatch(logout());
-    
-    // Navigate back to the login page
+ 
     navigate('/');
   };
 
   return (
-    <div>
+    <div className='container'>
       <h1>{t('welcome')}</h1>
       <p>{t('welcomeMessage')}</p>
       <button onClick={handleLogout}>{t('logout')}</button> {/* Logout button */}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom'; 
 import { useTranslation } from 'react-i18next';
 import { login } from '../redux/actions/authActions';
 import '../styles/LoginStyle.css';
@@ -8,26 +8,22 @@ import '../styles/LoginStyle.css';
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(''); // State to handle error message
+  const [error, setError] = useState(''); 
+  const [success, setSuccess] = useState(''); 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
   const { t } = useTranslation();
-  
-  // Use optional chaining to avoid reading undefined
-  const loginError = useSelector((state) => state.auth?.error); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    setError(''); // Clear previous error
-
-    // Dispatch login action
-    const success = await dispatch(login(username, password));
-
-    if (success) {
-      navigate('/welcome'); // Navigate on successful login
-    } else {
-      setError(t('invalidCredentials')); // Set error message if login fails
+    try {
+      const result = await dispatch(login(username, password));
+      setSuccess(result.message || t('Login successful')); 
+      setError('');
+      navigate('/welcome');
+    } catch (err) {
+      setError(err.message || t('Login failed'));
+      setSuccess(''); 
     }
   };
 
@@ -40,6 +36,7 @@ const Login = () => {
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            required
           />
         </div>
         <div>
@@ -48,9 +45,11 @@ const Login = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
-        {loginError && <div className="error-message">{loginError}</div>} {/* Display error */}
+        {error && <div className="error-message">{error}</div>} {/* Display error message */}
+        {success && <div className="success-message">{success}</div>} {/* Display success message */}
         <button type="submit">{t('login')}</button>
       </form>
     </div>
