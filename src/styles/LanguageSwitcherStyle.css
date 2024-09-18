@@ -1,0 +1,21 @@
+.language-switcher-container {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px;
+  }
+  
+  .language-button {
+    background-color: #227C9D;
+    color: #FEF9EF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .language-button:hover {
+    background-color: #227C9D;
+  }
+  

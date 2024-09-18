@@ -1,8 +1,8 @@
-import { createStore, combineReducers } from 'redux';
-import { authReducer } from './reducers/authReducer';
+import { createStore, applyMiddleware } from 'redux';
+import { thunk } from 'redux-thunk'; // Fix the import for thunk (use curly braces for named import)
+import authReducer from './reducers/authReducer'; // Fix the reducer import
 
-const rootReducer = combineReducers({
-    auth: authReducer
-});
+// Create the store and apply the thunk middleware
+const store = createStore(authReducer, applyMiddleware(thunk));
 
-export const store = createStore(rootReducer);
+export default store;

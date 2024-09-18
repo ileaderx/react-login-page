@@ -1,3 +1,5 @@
+import { type } from "@testing-library/user-event/dist/type";
+
 export const signUp = (username, password) => {
     // Retrieve existing users from localStorage
     let users = JSON.parse(localStorage.getItem('users')) || [];
@@ -26,5 +28,11 @@ export const signUp = (username, password) => {
         type: 'LOGIN_FAILED'
       };
     }
+  };
+
+  export const logout = () => {
+    return{
+      type: 'LOGOUT'
+    } 
   };
   

@@ -1,0 +1,30 @@
+button{
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #FEF9EF;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+    background-color: #FEF9EF;
+    border-color: #FE6D73; 
+    color: #FE6D73;
+}
+button:hover{
+    background-color: #FE6D73; 
+    border-color: #FE6D73;
+    color: #FEF9EF;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #FEF9EF;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}

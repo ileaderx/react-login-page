@@ -1,0 +1,61 @@
+.nav-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .nav-link {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #FEF9EF;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+  }
+  
+  .nav-link.signup {
+    background-color: #FFFFFF;
+    border-color: #17C3B2; 
+    color: #17C3B2;
+  }
+  
+  .nav-link.signup.active-link {
+    background-color: #17C3B2; 
+    border-color: #17C3B2;
+    color: #FEF9EF;
+  }
+  
+
+  .nav-link.login {
+    background-color: #FFFFFF; 
+    border-color: #FE6D73; 
+    color: #FE6D73;
+  }
+  
+  .nav-link.login.active-link {
+    background-color: #FE6D73;
+    border-color: #FE6D73;
+    color: #FEF9EF;
+  }
+  
+
+  .nav-link:hover {
+    opacity: 0.8;
+  }
+
+  [dir="rtl"] .language-switcher-container {
+    justify-content: flex-start; /* Ensure it remains centered in RTL as well */
+  }
+  
+[dir="rtl"] .nav-container {
+  justify-content: center;
+}
+
+[dir="rtl"] .nav-link {
+  text-align: right;
+}
