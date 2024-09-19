@@ -7,6 +7,7 @@ import Welcome from './components/Welcome';
 import LanguageSwitcher from './components/LanguageSwitcher';
 import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import ProtectedRoute from './components/ProtectedRoute';
 import './i18n';
 import './styles/NavSwitcherStyle.css'; // Import your styles
 
@@ -35,7 +36,7 @@ function App() {
           <Routes>
             <Route path="/signup" element={<SignUp />} />
             <Route path="/" element={<Login />} />
-            <Route path="/welcome" element={<Welcome />} /> {/* Welcome page */}
+            <Route path="/welcome" element={<ProtectedRoute component={Welcome} />} />
           </Routes>
         </div>
       </Router>
