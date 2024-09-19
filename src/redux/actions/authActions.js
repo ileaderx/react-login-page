@@ -1,38 +1,31 @@
-import { type } from "@testing-library/user-event/dist/type";
+import axios from 'axios';
+import { LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT, SIGN_UP_SUCCESS, SIGN_UP_FAILURE } from '../types';
 
-export const signUp = (username, password) => {
-    // Retrieve existing users from localStorage
-    let users = JSON.parse(localStorage.getItem('users')) || [];
-    users.push({ username, password });
-    localStorage.setItem('users', JSON.stringify(users));
-    
-    return {
-      type: 'SIGNUP',
-      payload: { username, password }
-    };
-  };
-  
-  export const login = (username, password) => {
-    // Retrieve users from localStorage
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const user = users.find(user => user.username === username && user.password === password);
-    
-    if (user) {
-      return {
-        type: 'LOGIN',
-        payload: { username, password }
-      };
-    } else {
-      alert('Invalid credentials');
-      return {
-        type: 'LOGIN_FAILED'
-      };
-    }
-  };
+const API_URL = 'http://localhost:5000'; 
 
-  export const logout = () => {
-    return{
-      type: 'LOGOUT'
-    } 
-  };
-  
+export const login = (username, password) => async (dispatch) => {
+  try {
+    const response = await axios.post(`${API_URL}/api/login`, { username, password });
+    dispatch({ type: LOGIN_SUCCESS, payload: response.data });
+    return response.data; 
+  } catch (error) {
+    dispatch({ type: LOGIN_FAILURE, payload: error.response.data });
+    throw new Error(error.response.data.message || 'Login failed'); 
+  }
+};
+
+export const signUp = (username, password) => async (dispatch) => {
+  try {
+    const response = await axios.post(`${API_URL}/api/register`, { username, password });
+    dispatch({ type: SIGN_UP_SUCCESS, payload: response.data });
+    return response.data; 
+  } catch (error) {
+    dispatch({ type: SIGN_UP_FAILURE, payload: error.response.data });
+    throw new Error(error.response.data.message || 'Sign-up failed'); 
+  }
+};
+
+export const logout = () => (dispatch) => {
+  localStorage.removeItem('token'); 
+  dispatch({ type: LOGOUT });
+};
