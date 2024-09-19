@@ -18,12 +18,18 @@ const Login = () => {
     e.preventDefault();
     try {
       const result = await dispatch(login(username, password));
-      setSuccess(result.message || t('Login successful')); 
-      setError('');
-      navigate('/welcome');
+      
+      if (result && result.token) {
+        localStorage.setItem('authToken', result.token);
+        setSuccess(result.message || t('Login successful')); // Set success message
+        setError(''); // Clear any existing errors
+        navigate('/welcome'); // Navigate to the welcome page
+      } else {
+        throw new Error(t('Invalid credentials')); // If no token is returned, trigger the error case
+      }
     } catch (err) {
-      setError(err.message || t('Login failed'));
-      setSuccess(''); 
+      setError(err.message || t('Login failed')); // Set the error message
+      setSuccess(''); // Clear any success messages
     }
   };
 

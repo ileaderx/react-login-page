@@ -12,7 +12,7 @@ const Welcome = () => {
 
   const handleLogout = () => {
     dispatch(logout());
- 
+    localStorage.removeItem('authToken');
     navigate('/');
   };
 
