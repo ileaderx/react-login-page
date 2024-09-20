@@ -14,6 +14,10 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
+userSchema.methods.authenticate = async function (plainText) {
+	return await bcrypt.compare(plainText, this.password);
+};
+
 const User = mongoose.models.User || mongoose.model('User', userSchema);
 
 module.exports = User;
