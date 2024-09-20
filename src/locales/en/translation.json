@@ -3,7 +3,7 @@
   "login": "Login",
   "username": "Username",
   "password": "Password",
-  "confirmPassword": "Confirm Password",
+  "confirmPassword": "Retype Password",
   "welcome": "Welcome",
   "welcomeMessage": "You have successfully logged in!",
   "logout": "Logout",

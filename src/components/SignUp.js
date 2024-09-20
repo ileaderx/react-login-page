@@ -41,6 +41,7 @@ const SignUp = () => {
           <label>{t('username')}</label>
           <input
             type="text"
+            placeholder={t('username')}
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
@@ -50,6 +51,7 @@ const SignUp = () => {
           <label>{t('password')}</label>
           <input
             type="password"
+            placeholder={t('password')}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -59,6 +61,7 @@ const SignUp = () => {
           <label>{t('confirmPassword')}</label>
           <input
             type="password"
+            placeholder={t('confirmPassword')}
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
