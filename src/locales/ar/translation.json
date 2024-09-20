@@ -6,5 +6,7 @@
   "confirmPassword": "تأكيد كلمة المرور",
   "welcome": "مرحبا",
   "welcomeMessage": "لقد سجلت الدخول بنجاح!",
-  "logout": "تسجيل الخروج"
+  "logout": "تسجيل الخروج",
+  "haveAccount": "عندك حساب؟ سجل دخول",
+  "dontHaveAccount": "ما عندك حساب؟"
 }

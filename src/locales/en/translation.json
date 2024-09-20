@@ -6,5 +6,7 @@
   "confirmPassword": "Confirm Password",
   "welcome": "Welcome",
   "welcomeMessage": "You have successfully logged in!",
-  "logout": "Logout"
+  "logout": "Logout",
+  "haveAccount": "Have account? login",
+  "dontHaveAccount": "Don't have account?"
 }
