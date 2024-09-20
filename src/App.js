@@ -19,20 +19,7 @@ function App() {
       <Router>
         <div>
           <LanguageSwitcher />
-          <nav className="nav-container">
-            <NavLink 
-              to="/signup" 
-              className={({ isActive }) => (isActive ? "nav-link signup active-link" : "nav-link signup")}
-            >
-              {t('signup')}
-            </NavLink>
-            <NavLink 
-              to="/" 
-              className={({ isActive }) => (isActive ? "nav-link login active-link" : "nav-link login")}
-            >
-              {t('login')}
-            </NavLink>
-          </nav>
+          
           <Routes>
             <Route path="/signup" element={<SignUp />} />
             <Route path="/" element={<Login />} />

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { signUp } from '../redux/actions/authActions';
-import '../styles/SignUpStyle.css'; 
+import '../styles/SignUpStyle.css';
 
 const SignUp = () => {
   const [username, setUsername] = useState('');
@@ -23,8 +24,8 @@ const SignUp = () => {
 
     try {
       const result = await dispatch(signUp(username, password));
-      setSuccess(result.message || t('Sign up successful')); 
-      setError(''); 
+      setSuccess(result.message || t('Sign up successful'));
+      setError('');
     } catch (err) {
       setError(err.message || t('Sign up failed'));
       setSuccess('');
@@ -33,6 +34,8 @@ const SignUp = () => {
 
   return (
     <div className="signup-container">
+      {error && <div className="error-message">{error}</div>} {/* Display error message */}
+      {success && <div className="success-message">{success}</div>} {/* Display success message */}
       <form className="signup-form" onSubmit={handleSubmit}>
         <div>
           <label>{t('username')}</label>
@@ -61,8 +64,14 @@ const SignUp = () => {
             required
           />
         </div>
-        {error && <div className="error-message">{error}</div>} {/* Display error message */}
-        {success && <div className="success-message">{success}</div>} {/* Display success message */}
+        <nav className="nav-container">
+            <NavLink 
+              to="/" 
+              className={({ isActive }) => (isActive ? "nav-link login active-link" : "nav-link login")}
+            >
+              {t('haveAccount')}
+            </NavLink>
+          </nav>
         <button type="submit">{t('signup')}</button>
       </form>
     </div>
