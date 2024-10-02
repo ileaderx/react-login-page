@@ -19,19 +19,23 @@ const Login = () => {
     try {
       const result = await dispatch(login(username, password));
 
-      if (result && result.token) {
-        localStorage.setItem('authToken', result.token);
-        setSuccess(result.message || t('Login successful')); // Set success message
-        setError(''); // Clear any existing errors
-        navigate('/welcome'); // Navigate to the welcome page
+      // Store the token and user role in localStorage
+      localStorage.setItem('authToken', result.token);
+      localStorage.setItem('userRole', result.user.role);
+
+      setError('');  // Clear any errors
+
+      // Check role and redirect accordingly
+      if (result.user.role === 'admin') {
+        navigate('/admin-dashboard');  // Redirect to AdminDashboard
       } else {
-        throw new Error(t('Invalid credentials')); // If no token is returned, trigger the error case
+        navigate('/welcome');  // Redirect to Welcome page for regular users
       }
     } catch (err) {
-      setError(err.message || t('Login failed')); // Set the error message
-      setSuccess(''); // Clear any success messages
+      setError(err.message || t('Login failed'));
     }
   };
+
 
   return (
     <div className="login-container">

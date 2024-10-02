@@ -11,6 +11,7 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [role, setRole] = useState('user');
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
@@ -23,7 +24,7 @@ const SignUp = () => {
     }
 
     try {
-      const result = await dispatch(signUp(username, password));
+      const result = await dispatch(signUp(username, password, role));
       setSuccess(result.message || t('Sign up successful'));
       setError('');
     } catch (err) {
@@ -75,6 +76,13 @@ const SignUp = () => {
               {t('haveAccount')}
             </NavLink>
           </nav>
+          <div>
+          {/* <label>{t('Role')}</label>
+          <select value={role} onChange={(e) => setRole(e.target.value)}>
+            <option value="user">{t('User')}</option>
+            <option value="admin">{t('Admin')}</option>
+          </select> */}
+        </div>
         <button type="submit">{t('signup')}</button>
       </form>
     </div>
